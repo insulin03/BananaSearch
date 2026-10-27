@@ -1,0 +1,2 @@
+{"question": "下列属于面向对象三大特性的有？", "options": ["封装", "继承", "多态", "编译"], "answer": "ABC", "type": "multi"}
+{"question": "TCP 三次握手的第一步是？", "options": ["客户端发送 SYN", "服务端发送 SYN", "客户端发送 ACK"], "answer": "A"}

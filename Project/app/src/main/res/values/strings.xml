@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">香蕉做题</string>
+    <string name="app_title">🍌 香蕉做题</string>
+    <string name="reader_desc">仅在你点「识别」时读取一次当前屏幕的界面文字，用于检索题库。本服务不做任何连续监控，也不会上传任何数据。图片/Canvas 渲染的内容读不到，那种情况请在应用内切换到「截屏 OCR」模式。</string>
+    <string name="notification_channel_name">识别服务</string>
+    <string name="notification_title">🍌 香蕉做题 正在运行</string>
+    <string name="notification_text">点屏幕上的圆形按钮展开菜单，再点「识别」识别当前题目</string>
+    <string name="notification_stop">停止服务</string>
+</resources>

@@ -1,0 +1,21 @@
+[
+  {
+    "question": "下列属于面向对象三大特性的有？",
+    "options": [
+      "封装",
+      "继承",
+      "多态",
+      "编译"
+    ],
+    "answer": "ABC",
+    "type": "multi"
+  },
+  {
+    "question": "最低毕业学分是 81 学分。",
+    "answer": "对"
+  },
+  {
+    "question": "请简述 TCP 三次握手的过程。",
+    "answer": "SYN -> SYN+ACK -> ACK"
+  }
+]

@@ -1,0 +1,32 @@
+name: 功能建议
+description: 想要一个新能力，或觉得某处可以更好
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你遇到的场景
+      description: 先描述问题，再描述你想要的解法
+      placeholder: 例：题库有 2000 题时，预览一页 10 条翻起来太慢，希望能量接跳到某一页。
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你希望怎么做
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 这个建议影响哪块
+      options:
+        - 题库导入 / 管理
+        - 识别与搜索
+        - 悬浮控件
+        - 界面与主题
+        - 其他
+    validations:
+      required: true

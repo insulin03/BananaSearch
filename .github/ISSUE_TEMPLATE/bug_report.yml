@@ -1,0 +1,58 @@
+name: Bug 报告
+description: 有东西不工作 / 行为不对
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请先把真实校名、姓名、学号、API Key 去掉再贴内容。
+
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 你做了什么、期望什么、实际看到什么
+      placeholder: |
+        例：题库页导入 xlsx 后提示「导入完成：1 批，共 0 题」，但文件里确实有 3 道题。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开「题库」页
+        2. 点「选择文件」
+        3. 选择 xxx.xlsx
+        4. 看到 …
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: 手机型号与 Android 版本
+      placeholder: 例：Redmi K70 / Android 14
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 搜索模式
+      options:
+        - 纯本地
+        - 混合模式
+        - 纯 DeepSeek
+        - 不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充材料
+      description: 可粘贴「关于 → 运行日志」片段（debug 包才有），或附一个最小题库文件
+    validations:
+      required: false

@@ -1,0 +1,66 @@
+name: build
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & unit test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Project
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # 只做质量门禁：编译可安装的 debug 包 + 跑纯 JVM 单测。
+      # 刻意不在这里出 release 包——那需要签名密钥，而签名密钥绝不能进仓库或 CI。
+      - name: Assemble debug
+        run: ./gradlew :app:assembleDebug --no-configuration-cache --stacktrace
+
+      - name: Unit tests
+        run: ./gradlew :app:testReleaseUnitTest --no-configuration-cache --stacktrace
+
+      # lint 也当门禁：只把 error 当失败，warning 不计（本地现有 34 条都是 UseKtx 之类的
+      # 风格建议与 Gradle 版本提示，卡住它们只会让人习惯性忽略 CI）。
+      - name: Lint (errors fail the build)
+        run: ./gradlew :app:lintRelease --no-configuration-cache --stacktrace
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: Project/app/build/reports/lint-results-release.*
+          retention-days: 7
+
+      - name: Upload test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-report
+          path: Project/app/build/reports/tests/**/*
+          retention-days: 7
+
+      - name: Upload debug apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: Project/app/build/outputs/apk/debug/*.apk
+          retention-days: 7

@@ -1,0 +1,37 @@
+# 构建产物（可由源码重新生成，体积很大）
+build/
+.gradle/
+.kotlin/
+local.properties
+captures/
+*.class
+*.dex
+*.jar
+*.aar
+
+# Gradle Wrapper 的 jar 必须入库，否则 clone 下来没有 gradlew 可用
+!Project/gradle/wrapper/gradle-wrapper.jar
+
+# 交付用 APK：二进制、可重新构建，走 GitHub Releases 而不入库
+apk/*.apk
+
+# 签名密钥：应用的身份，泄露等于别人能签一个冒充你的包
+keystore/
+keystore.properties
+*.jks
+*.keystore
+
+# 本机 / IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 临时与调试产物
+*.log
+*.tmp
+
+
+# 构建时由 Project/docs/templates 复制生成，不入库
+Project/app/src/main/assets/templates/
